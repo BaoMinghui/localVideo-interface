@@ -1,21 +1,8 @@
-# localvideo
+### [localvideo](https://github.com/BaoMinghui/localVideo) 前端项目文件
 
-> A Vue.js project
+#### 项目构成<br>
+###### vue,elementUI,axios
 
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+#### 运行方式
+1. npm install
+2. npm run dev

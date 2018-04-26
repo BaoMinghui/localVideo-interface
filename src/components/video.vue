@@ -1,33 +1,42 @@
 <template lang="html">
   <div class="video" >
 
-    <a :href='video_url(item)'>
-      <div class="img">
-
+    <el-card height="16rem" shadow="hover">
+      <div class="img"  @click="turn_to(item.id)">
+        <img src="../assets/video.jpg" alt="">
       </div>
-    <p class="video_name">
-        {{item.name}}
-    </p>
-    </a>
+      <p class="video_name">
+          {{item.name}}
+      </p>
+    </el-card>
+
   </div>
+
 </template>
 
 <script>
 export default {
-  name:'video_tag',
-  props:{
-    item:{
-      type:Object
+  name: 'video_tag',
+  props: {
+    item: {
+      type: Object
     }
   },
-  data(){
-    return{
+  data() {
+    return {
 
     }
   },
-  methods:{
-    video_url(item) {
-      return '/video/' + item.id
+  methods: {
+
+    turn_to() {
+      this.$router.push({
+        name: 'video',
+        params: {
+          id: this.item.id,
+          name: this.item.name
+        }
+      })
     }
   }
 }
@@ -35,15 +44,17 @@ export default {
 
 <style lang="css" scoped>
 .video{
-  margin: 1.25rem
+  display: inline-block;
 }
 .video_name{
   font-size: 1rem;
   width: 9rem;
   word-break: break-all;
+  display: block;
+  height: 2rem;
 }
-.img{
-  height: 5.5rem;
+.img img{
+  height: 6rem;
   width: 9rem;
   background-color: #666;
 }

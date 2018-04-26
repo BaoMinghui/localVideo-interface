@@ -1,23 +1,38 @@
 <template lang="html">
   <div class="content">
-    <div class="video_area">
-      <div v-for="item in video">
-        <videotag :item="item"></videotag>
-      </div>
-    </div>
-    <pagetag :pageNumber='page' @page_up="pageUp" @page_down="pageDown"></pagetag>
 
+    <el-row
+    type="flex"
+    justify="center"
+    >
+      <el-col :span="14" class="video_area">
+        <videotag v-for="item in video" :item="item"></videotag>
+      </el-col>
+    </el-row>
+
+    <el-pagination
+      class="pagetag"
+      background
+      layout="prev, pager, next,sizes"
+      :page-size="10"
+      :page-sizes='[10,20,30]'
+      :page-count="total"
+      :current-page.sync="page"
+      @current-change="getData"
+      @size-change="page_size_change"
+    ></el-pagination>
   </div>
 </template>
 
 <script>
 import videotag from '../components/video'
-import pagetag from '../components/page'
 export default {
   data() {
     return {
       video: [],
+      total:0,
       page: 1,
+      limit:20,
       tag: []
     }
   },
@@ -33,35 +48,28 @@ export default {
     getData() {
       this.$http.get("/video", {
         params: {
-          page: this.page
+          page: this.page,
+          limit:this.limit
         }
       }).then(
         (res) => {
-          this.video = res.data
+          if(res.data.status){
+            this.video = res.data.data
+            this.total = res.data.total
+          }
         }
       )
     },
-    pageUp() {
-      this.page++
+    page_size_change(val){
+      this.limit = val
       this.getData()
-    },
-    pageDown() {
-      this.page--
-      this.getData()
-    },
-  },
-  computed: {
-
-  },
-  watch:{
-
+    }
   },
   mounted() {
     this.getData()
   },
-  components:{
-    videotag,
-    pagetag
+  components: {
+    videotag
   }
 }
 </script>
@@ -69,6 +77,7 @@ export default {
 <style lang="css">
   .content{
     text-align: center;
+    padding-top: 5%;
   }
   .video_area{
     display: flex;
@@ -76,8 +85,8 @@ export default {
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: flex-start;
-    width: 50%;
-    margin: auto;
   }
-
+.pagetag{
+  margin-top: 3rem;
+}
 </style>

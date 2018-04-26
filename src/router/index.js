@@ -13,7 +13,8 @@ export default new Router({
     },{
       path:'/video',
       name:'video',
-      component:video
+      component:video,
+      props:true
     }
   ]
 })

@@ -1,27 +1,45 @@
 <template lang="html">
-<video :src='src'>
-
-</video>
+  <el-row
+  class="centent"
+  type="flex"
+  justify="center"
+    >
+    <el-col :span="14">
+      <h2>{{name}}</h2>
+      <video class="video_box" :src="video_url()"  controls
+      poster="../assets/video.jpg">
+      </video>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
 export default {
-  data(){
-    return{
-      url:'',
-      videoid:''
+  props: [
+    "id","name"
+  ],
+  data() {
+    return {
+      url: '',
+      videoid: ''
     }
   },
-  methods:{
-    getUrl(){
-      
-    }
+  methods: {
+    video_url() {
+      return '/video/' + this.id
+    },
   },
-  mounted(){
+  mounted() {
 
-  }
+  },
 }
 </script>
 
 <style lang="css">
+.content{
+  width: 100%;
+}
+.video_box{
+  width: 100%
+}
 </style>

@@ -5,17 +5,19 @@
     type="flex"
     justify="center"
     >
-      <el-col :span="14" class="video_area">
-        <videotag v-for="item in video" :item="item"></videotag>
+      <el-col :xl="16" class="video_area">
+        <videotag v-for="item in video" :item="item" :key="set_key(item)"></videotag>
       </el-col>
     </el-row>
 
     <el-pagination
       class="pagetag"
       background
+      small
       layout="prev, pager, next,sizes"
-      :page-size="10"
-      :page-sizes='[10,20,30]'
+      :page-size="limit"
+      :page-sizes='[6,10,20,30]'
+      :pager-count="5"
       :page-count="total"
       :current-page.sync="page"
       @current-change="getData"
@@ -32,7 +34,7 @@ export default {
       video: [],
       total:0,
       page: 1,
-      limit:20,
+      limit:10,
       tag: []
     }
   },
@@ -63,6 +65,9 @@ export default {
     page_size_change(val){
       this.limit = val
       this.getData()
+    },
+    set_key(item){
+      return item.name
     }
   },
   mounted() {
@@ -83,10 +88,7 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-start;
   }
-.pagetag{
-  margin-top: 3rem;
-}
 </style>

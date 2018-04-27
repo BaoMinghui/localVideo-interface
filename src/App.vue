@@ -1,12 +1,17 @@
 <template>
-  <div id="app">
+  <el-container id="app">
+    <top-tool ref="topTool"></top-tool>
     <router-view/>
-  </div>
+  </el-container>
 </template>
 
 <script>
+import topTool from './components/toptool'
 export default {
-  name: 'App'
+  name: 'App',
+  components:{
+    topTool
+  }
 }
 </script>
 
@@ -17,6 +22,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 </style>

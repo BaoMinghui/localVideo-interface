@@ -4,16 +4,18 @@
   type="flex"
   justify="center"
     >
-    <el-col :span="14">
+    <el-col :xl="14">
       <h2>{{name}}</h2>
       <video class="video_box" :src="video_url()"  controls
       poster="../assets/video.jpg">
       </video>
+      <video-tool ref="videoTool" :id="id"></video-tool>
     </el-col>
   </el-row>
 </template>
 
 <script>
+import videoTool from '../components/videoTool'
 export default {
   props: [
     "id","name"
@@ -32,6 +34,9 @@ export default {
   mounted() {
 
   },
+  components:{
+    videoTool
+  }
 }
 </script>
 

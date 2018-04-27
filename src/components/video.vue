@@ -1,8 +1,8 @@
 <template lang="html">
-  <div class="video" >
+  <div class="video"  @click="turn_to(item.id)">
 
-    <el-card height="16rem" shadow="hover">
-      <div class="img"  @click="turn_to(item.id)">
+    <el-card shadow="hover">
+      <div class="img">
         <img src="../assets/video.jpg" alt="">
       </div>
       <p class="video_name">
@@ -48,14 +48,13 @@ export default {
 }
 .video_name{
   font-size: 1rem;
-  width: 9rem;
+  width: 8rem;
   word-break: break-all;
   display: block;
   height: 2rem;
 }
 .img img{
-  height: 6rem;
-  width: 9rem;
+  width: 8rem;
   background-color: #666;
 }
 </style>

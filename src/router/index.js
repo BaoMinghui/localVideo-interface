@@ -9,12 +9,18 @@ export default new Router({
     {
       path: '/',
       name: 'index',
-      component: index
+      redirect:{
+        path:'/page/1'
+      }
     },{
-      path:'/video',
+      path:'/video/:id',
       name:'video',
       component:video,
       props:true
+    },{
+      path:'/page/:page',
+      name:'page',
+      component:index,
     }
   ]
 })

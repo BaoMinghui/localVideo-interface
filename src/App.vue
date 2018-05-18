@@ -1,7 +1,7 @@
 <template>
   <el-container id="app">
     <top-tool ref="topTool"></top-tool>
-    <router-view/>
+    <router-view class="router-view"></router-view>
   </el-container>
 </template>
 
@@ -24,5 +24,8 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.router-view{
+  margin-top: 1.25rem;
 }
 </style>

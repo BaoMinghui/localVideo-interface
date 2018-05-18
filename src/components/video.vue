@@ -3,7 +3,7 @@
 
     <el-card shadow="hover">
       <div class="img">
-        <img src="../assets/video.jpg" alt="">
+        <img src="../assets/video.jpg" :alt="item.name">
       </div>
       <p class="video_name">
           {{item.name}}
@@ -33,8 +33,7 @@ export default {
       this.$router.push({
         name: 'video',
         params: {
-          id: this.item.id,
-          name: this.item.name
+          id: this.item.id
         }
       })
     }
